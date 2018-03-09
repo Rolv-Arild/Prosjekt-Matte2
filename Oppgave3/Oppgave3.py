@@ -1,10 +1,25 @@
-from scipy.sparse.linalg import spsolve
-from scipy.sparse import csr_matrix
-from Oppgave2.Oppgave2 import make_a
 import numpy as np
+from scipy.sparse.linalg import spsolve
+
+from Oppgave2.Oppgave2 import make_a
 
 
+# n = number of steps, L = length, w = width, d = thickness, p = density,
+# E = Young modulus, g = gravitational constant, f = weight function
 def displacement(n, L, w, d, p, E, g=-9.81, f=None):
+    """
+    A method for calculating the displacement of a beam
+
+    :param n: number of steps
+    :param L: length
+    :param w: width
+    :param d: thickness
+    :param p: density
+    :param E: Young modulus
+    :param g: gravitational constant
+    :param f: weight function
+    :return: the displacement at each step
+    """
     A = make_a(n)
 
     if f is None:
@@ -14,8 +29,6 @@ def displacement(n, L, w, d, p, E, g=-9.81, f=None):
     I = w * d ** 3 / 12
 
     b = [f(x) * h ** 4 / (E * I) for x in np.arange(n, L + n, h)]
-
-    print(b)
 
     y = spsolve(A, b)
 
