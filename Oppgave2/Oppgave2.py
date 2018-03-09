@@ -14,7 +14,7 @@ def make_a(n):
     A[0, 0:4] = B[0, :]
     A[n - 2, n - 4:n] = B[1, :]
     A[n - 1, n - 4:n] = B[2, :]
-    return A
+    return A.tocsr()
 
 
 # print(make_a(6).toarray(), file=open('oppgave2.txt', 'w'))
