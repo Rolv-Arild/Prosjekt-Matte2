@@ -4,8 +4,6 @@ from scipy.sparse.linalg import spsolve
 from Oppgave2.Oppgave2 import make_a
 
 
-# n = number of steps, L = length, w = width, d = thickness, p = density,
-# E = Young modulus, g = gravitational constant, f = weight function
 def displacement(n, L, w, d, p, E, g=-9.81, f=None):
     """
     A method for calculating the displacement of a beam
