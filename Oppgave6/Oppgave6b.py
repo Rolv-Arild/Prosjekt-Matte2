@@ -26,11 +26,16 @@ def correct(x):
 c = correct(L)
 
 
-def error_margin(): return [
-    abs(displacement(n, L, E, I, f=f)[-1] - c)
-    for n in range(20, 10 * 2 ** 11, 20)
-]
+def error_margin(n):
+    return abs(displacement(n, L, E, I, f=f)[-1] - c)
 
 
-e = error_margin()
-print(max(e))
+maxE = 0
+maxN = 0
+for n in range(20, 10 * 2 ** 11, 20):
+    e = error_margin(n)
+    if e > maxE:
+        maxE = e
+        maxN = n
+
+print(maxN, maxE)  # 18900 0.004973917738686384

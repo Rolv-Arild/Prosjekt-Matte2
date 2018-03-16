@@ -48,8 +48,8 @@ def displacement(n: int, L: float, E: float, I: float, f: staticmethod) -> list:
 
     h = L / n
 
-    # x_n = h * n
-    b = [f(h * x) * h ** 4 / (E * I) for x in range(1, n + 1)]
+    # x_i = h * i
+    b = [f(h * i) * h ** 4 / (E * I) for i in range(1, n + 1)]
 
     y = spsolve(A, b)
 
