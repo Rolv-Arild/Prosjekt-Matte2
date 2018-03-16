@@ -1,21 +1,22 @@
 import numpy as np
-from scipy.sparse.linalg import spsolve
-
 import scipy as sp
-from scipy.sparse import spdiags
-from scipy.sparse import lil_matrix
 from scipy.sparse import csr_matrix
+from scipy.sparse import lil_matrix
+from scipy.sparse import spdiags
+from scipy.sparse.linalg import spsolve
 
 
 def make_a(n):
     """
     Creates a matrix that can be used to solve Euler-Bernoulli beam equations EIy''''=f(x)
 
-    |16 -9 8/3 -1/4
-    |1 -4 6 -4 1
-    |
-    |16/17 -60/17 72/17 -28/17 |
-    |-12/17  96/17   -156/17 72/17|
+    |16        -9        8/3       -1/4                                 |
+    |          1         -4        6         -4        1                |
+    |             ...       ...       ...       ...       ...           |
+    |                    1         -4        6         -4        1      |
+    |                              16/17     -60/17    72/17     -28/17 |
+    |                              -12/17    96/17     -156/17   72/17  |
+
 
     :param n: the length of the matrix
     :return: a matrix with the necessary values to solve Euler-Bernoulli beam equations
