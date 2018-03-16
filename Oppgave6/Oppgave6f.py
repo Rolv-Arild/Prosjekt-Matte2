@@ -1,4 +1,3 @@
-import matplotlib.pyplot as pl
 import numpy as np
 
 from util import displacement
@@ -26,23 +25,13 @@ def correct(x):
 
 c = correct(L)
 
-maxE = 0
-maxN = 0
-plot1 = []
-plot2 = []
+minE = 1000
+minN = 0
 for n in range(20, 10 * 2 ** 11, 20):
     disp = displacement(n, L, E, I, f=f)[-1]
     e = abs(disp - c)
-    plot2.append(n)
-    plot1.append(e)
-    if e > maxE:
-        maxE = e
-        maxN = n
+    if e < minE:
+        minE = e
+        minN = n
 
-# pl.plot([1, 2, 3, 4])
-pl.plot(np.log10(plot2), np.log10(plot1), label='error(L)')
-
-pl.legend(loc='best')
-pl.ylabel('$log_{10}$(y)')
-pl.xlabel('$log_{10}$(n)')
-pl.show()
+print('Minste feil er', minE, 'på n =', minN)  # n=1660 e=3.830370687296636e-09
