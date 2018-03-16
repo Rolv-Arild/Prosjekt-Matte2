@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.sparse import csr_matrix
 from util import make_a
 
 
@@ -19,8 +20,8 @@ def correct(x):
     return -p * w * d * g / (24 * E * I) * x ** 2 * (x ** 2 - 4 * L * x + 6 * L ** 2)
 
 
-y_e = np.array([correct(x/10) for x in range(2, 21, 2)])
+y_e = csr_matrix([correct(x/10) for x in range(2, 21, 2)])
 
-Ay_e = [(1/(0.2**4)) * (make_a(10).dot(y_e.T))]
+Ay_e = (1/(0.2**4)) * (make_a(10).dot(y_e.T))
 print(Ay_e)
 
