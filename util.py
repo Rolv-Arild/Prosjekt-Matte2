@@ -8,6 +8,18 @@ from scipy.sparse import csr_matrix
 
 
 def make_a(n):
+    """
+    Creates a matrix that can be used to solve Euler-Bernoulli beam equations EIy''''=f(x)
+
+    |16 -9 8/3 -1/4
+    |1 -4 6 -4 1
+    |
+    |16/17 -60/17 72/17 -28/17 |
+    |-12/17  96/17   -156/17 72/17|
+
+    :param n: the length of the matrix
+    :return: a matrix with the necessary values to solve Euler-Bernoulli beam equations
+    """
     e = sp.ones(n)
     A = spdiags([e, -4 * e, 6 * e, -4 * e, e], [-2, -1, 0, 1, 2], n, n)
     A = lil_matrix(A)
@@ -34,7 +46,7 @@ def displacement(n: int, L: float, E: float, I: float, f: staticmethod) -> list:
 
     h = L / n
 
-    b = [f(x) * h ** 4 / (E * I) for x in np.arange(n, L + n, h)]
+    b = [f(x) * h ** 4 / (E * I) for x in np.arange(n, L + n, h)]  # L+n is excluded, so last is L
 
     y = spsolve(A, b)
 

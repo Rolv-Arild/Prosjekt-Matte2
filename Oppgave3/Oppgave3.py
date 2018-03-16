@@ -11,7 +11,12 @@ E = 1.3E10
 L = 2.0
 n = 10000
 
-print(displacement(n, L, E, I, f=lambda x: - p * w * d * g - p * g * np.sin(np.pi * x / L))[n // 10])
+
+def f(x):
+    return - p * w * d * g
+
+
+print(displacement(n, L, E, I, f=f)[n // 10])
 
 # Should be y(x) = (f/24EI)x^2(x^2-4Lx+6L^2) = -0.000201231x^2(x^2-8x+24)
 #   {-0.000180625, -0.000674848, -0.00141699, -0.00234909, -0.00342093,
