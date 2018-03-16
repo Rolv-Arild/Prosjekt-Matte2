@@ -5,11 +5,15 @@ from util import displacement
 w = 0.3
 d = 0.03
 p_1 = 480
-p_2 = 480
+p_2 = 100
 g = 9.81
 I = w * d ** 3 / 12
 E = 1.3E10
 L = 2.0
+
+
+def f(x):
+    return - p_1 * w * d * g - p_2 * g * np.sin(np.pi * x / L)
 
 
 def correct(x):
@@ -19,8 +23,11 @@ def correct(x):
                    np.pi ** 2))
 
 
+c = correct(L)
+
+
 def error_margin(): return [
-    abs(displacement(n, L, E, I, f=lambda x: - p_1 * w * d * g - p_2 * g * np.sin(np.pi * x / L))[-1] - correct(L))
+    abs(displacement(n, L, E, I, f=f)[-1] - c)
     for n in range(20, 10 * 2 ** 11, 20)
 ]
 

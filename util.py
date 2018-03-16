@@ -1,4 +1,3 @@
-import numpy as np
 import scipy as sp
 from scipy.sparse import csr_matrix
 from scipy.sparse import lil_matrix
@@ -49,7 +48,8 @@ def displacement(n: int, L: float, E: float, I: float, f: staticmethod) -> list:
 
     h = L / n
 
-    b = [f(x) * h ** 4 / (E * I) for x in np.arange(n, L + n, h)]  # L+n is excluded, so last is L
+    # x_n = h * n
+    b = [f(h * x) * h ** 4 / (E * I) for x in range(1, n + 1)]
 
     y = spsolve(A, b)
 
