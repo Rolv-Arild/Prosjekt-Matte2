@@ -30,7 +30,7 @@ maxE = 0
 maxN = 0
 plot1 = []
 plot2 = []
-for n in range(20, 10 * 2 ** 11, 20):
+for n in range(20, 1 + 10 * 2 ** 11, 20):
     disp = displacement(n, L, E, I, f=f)[-1]
     e = abs(disp - c)
     plot2.append(n)
@@ -39,7 +39,6 @@ for n in range(20, 10 * 2 ** 11, 20):
         maxE = e
         maxN = n
 
-# pl.plot([1, 2, 3, 4])
 pl.plot(np.log10(plot2), np.log10(plot1), label='error(L)')
 
 pl.legend(loc='best')

@@ -27,7 +27,7 @@ c = correct(L)
 
 minE = 1000
 minN = 0
-for n in range(20, 10 * 2 ** 11, 20):
+for n in range(20, 1 + 10 * 2 ** 11, 20):
     disp = displacement(n, L, E, I, f=f)[-1]
     e = abs(disp - c)
     if e < minE:

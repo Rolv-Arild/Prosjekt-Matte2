@@ -30,7 +30,7 @@ maxE = 0
 maxN = 0
 plot1 = []
 plot2 = []
-for n in range(20, 10 * 2 ** 11, 20):
+for n in range(20, 1 + 10 * 2 ** 11, 20):
     disp = displacement(n, L, E, I, f=f)[-1]
     plot1.append(disp)
     plot2.append(n)
@@ -41,7 +41,6 @@ for n in range(20, 10 * 2 ** 11, 20):
 
 print('Største feil er', maxE, 'på n =', maxN)  # n=18900 e=0.004973917738686384
 
-# pl.plot([1, 2, 3, 4])
 pl.plot(plot2, plot1, label='$y_c$(L)')
 pl.axhline(c, color='r', label='$y_e$(L)')
 

@@ -33,7 +33,7 @@ plot1 = []
 plot2 = []
 plot3 = []
 plot4 = []
-for n in range(20, 10 * 2 ** 11, 20):
+for n in range(20, 1 + 10 * 2 ** 11, 20):
     disp = displacement(n, L, E, I, f=f)[-1]
     e = abs(disp - c)
     plot2.append(n)
