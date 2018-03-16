@@ -1,3 +1,4 @@
+import matplotlib.pyplot as pl
 import numpy as np
 
 from util import displacement
@@ -25,17 +26,25 @@ def correct(x):
 
 c = correct(L)
 
-
-def error_margin(n):
-    return abs(displacement(n, L, E, I, f=f)[-1] - c)
-
-
 maxE = 0
 maxN = 0
-for n in range(20, 10 * 2 ** 11, 20):
-    e = error_margin(n)
+plot1 = []
+plot2 = []
+for n in range(20, 1 + 10 * 2 ** 11, 20):
+    disp = displacement(n, L, E, I, f=f)[-1]
+    plot1.append(disp)
+    plot2.append(n)
+    e = abs(disp - c)
     if e > maxE:
         maxE = e
         maxN = n
 
-print(maxN, maxE)  # 18900 0.004973917738686384
+print('Største feil er', maxE, 'på n =', maxN)  # n=18900 e=0.004973917738686384
+
+pl.plot(plot2, plot1, label='$y_c$(L)')
+pl.axhline(c, color='r', label='$y_e$(L)')
+
+pl.legend(loc='best')
+pl.ylabel('y')
+pl.xlabel('n')
+pl.show()
