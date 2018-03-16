@@ -11,6 +11,7 @@ def make_a(n):
     Creates a matrix that can be used to solve Euler-Bernoulli beam equations EIy''''=f(x)
 
     |16        -9        8/3       -1/4                                 |
+    |-4        6         -4        1                                    |
     |          1         -4        6         -4        1                |
     |             ...       ...       ...       ...       ...           |
     |                    1         -4        6         -4        1      |
