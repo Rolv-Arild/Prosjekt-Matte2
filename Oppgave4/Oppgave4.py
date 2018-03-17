@@ -29,4 +29,5 @@ Ay_e = (1/(0.2**4)) * (make_a(n).dot(y_e.T))
 
 y4_e = csr_matrix([f(1)/(E*I) for x in range(0, n)]).T
 
-print(y4_e - Ay_e)
+print(max(np.abs(y4_e - Ay_e)))
+
