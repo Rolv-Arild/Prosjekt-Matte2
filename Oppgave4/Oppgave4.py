@@ -10,6 +10,7 @@ g = 9.81
 I = w * d ** 3 / 12
 E = 1.3E10
 L = 2.0
+n = 10
 
 
 def f(x):
@@ -17,19 +18,18 @@ def f(x):
 
 
 def correct(x):
-    return -p * w * d * g / (24 * E * I) * x ** 2 * (x ** 2 - 4 * L * x + 6 * L ** 2)
+    return f(x) / (24 * E * I) * x ** 2 * (x ** 2 - 4 * L * x + 6 * L ** 2)
 
 
-n = 10
-
+# Oppgave4c
 y_e = csr_matrix([correct(x/n) for x in range(2, 21, 2)])
-
 Ay_e = (1/(0.2**4)) * (make_a(n).dot(y_e.T))
 
-
+# Oppgave 4d
 y4_e = csr_matrix([f(1)/(E*I) for x in range(0, n)]).T
 
 
+# Oppgave 4e
 y_c = csr_matrix(displacement(n, L, E, I, f))
 print(np.max(abs(y_c - y_e)))
 
