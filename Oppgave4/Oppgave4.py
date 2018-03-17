@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.sparse import csr_matrix
-from util import make_a
+from util import make_a, displacement
 
 
 w = 0.3
@@ -29,5 +29,7 @@ Ay_e = (1/(0.2**4)) * (make_a(n).dot(y_e.T))
 
 y4_e = csr_matrix([f(1)/(E*I) for x in range(0, n)]).T
 
-print(max(np.abs(y4_e - Ay_e)))
+
+y_c = csr_matrix(displacement(n, L, E, I, f))
+print(np.max(abs(y_c - y_e)))
 
