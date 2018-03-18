@@ -34,14 +34,17 @@ print(Ay_e)
 
 # Oppgave 4d
 y4_e = csr_matrix([f(1)/(E*I) for x in range(0, n)]).T
+FEd = np.max(abs(y4_e - Ay_e))
 print("\n\nOppgave 4d:")
-print(np.max(abs(Ay_e - y4_e)))
+print("Forward error: ", FEd)
+print("Relative Forward error: ", FEd / np.max(abs(y4_e)))
 
 
 # Oppgave 4e
 y_c = csr_matrix(displacement(n, L, E, I, f))
+FEe = np.max(abs(y_c-y_e))
 print("\n\nOppgave 4e:")
-print(np.max(abs(y_c-y_e)))
+print("Forward error: ", FEe)
 
 
 # Cond A
