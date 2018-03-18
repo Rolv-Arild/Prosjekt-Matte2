@@ -33,7 +33,7 @@ plot2 = []
 plot3 = []
 plot4 = []
 plot5 = []
-for n in range(1, 11):
+for n in range(1, 12):
     x = 10 * 2 ** n
     disp = displacement(x, L, E, I, f=f)[-1]
     con = cond(make_a(x))
@@ -42,7 +42,6 @@ for n in range(1, 11):
     plot1.append(e)
     plot3.append(2 ** -52 * con)
     plot4.append((L / x) ** 2)
-    plot5.append(2 ** -52 * con + (L / x) ** 2)
     if e > maxE:
         maxE = e
         maxN = x

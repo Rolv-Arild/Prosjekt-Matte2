@@ -28,7 +28,7 @@ maxE = 0
 maxN = 0
 errs = []
 plot2 = []
-for n in range(1, 11):
+for n in range(1, 12):
     x = 10 * 2 ** n
     e = error_margin(x)
     errs.append(e)

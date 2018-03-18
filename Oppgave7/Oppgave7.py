@@ -1,3 +1,5 @@
+import matplotlib.pyplot as pl
+
 from util import displacement
 
 w = 0.3
@@ -21,3 +23,18 @@ def f(x):
 
 
 print(displacement(20000, L, E, I, f)[-1])
+
+plot1 = []
+plot2 = []
+for n in range(1, 12):
+    x = 10 * 2 ** n
+    disp = displacement(x, L, E, I, f=f)[-1]
+    plot1.append(disp)
+    plot2.append(x)
+
+pl.plot(plot2, plot1, label='$y_c$(L)')
+
+pl.legend(loc='best')
+pl.ylabel('y')
+pl.xlabel('n')
+pl.show()
