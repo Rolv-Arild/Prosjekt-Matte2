@@ -1,7 +1,6 @@
-import numpy as np
 import scipy as sp
 from scipy.sparse import csr_matrix, lil_matrix, spdiags
-from scipy.sparse.linalg import spsolve
+from scipy.sparse.linalg import spsolve, eigs, eigsh
 
 
 def make_a(n):
@@ -33,7 +32,7 @@ def make_a(n):
     return A.tocsr()
 
 
-def displacement(n: int, L: float, E: float, I: float, f: staticmethod) -> list:
+def displacement(n: int, L: float, E: float, I: float, f: staticmethod):
     """
     A method for calculating the displacement of a beam
 
@@ -52,4 +51,4 @@ def displacement(n: int, L: float, E: float, I: float, f: staticmethod) -> list:
 
     y = spsolve(A, b)
 
-    return y
+    return y, abs(eigsh(A, k=1, which='LM')[0] / eigsh(A, k=1, which='SM')[0])
