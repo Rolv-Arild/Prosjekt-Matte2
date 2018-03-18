@@ -1,7 +1,7 @@
 import matplotlib.pyplot as pl
 import numpy as np
 
-from util import displacement
+from util import displacement, make_a, cond
 
 w = 0.3
 d = 0.03
@@ -35,15 +35,14 @@ plot4 = []
 plot5 = []
 for n in range(1, 11):
     x = 10 * 2 ** n
-    disp = displacement(x, L, E, I, f=f)
-    cond = disp[1]
-    disp = disp[0][-1]
+    disp = displacement(x, L, E, I, f=f)[-1]
+    con = cond(make_a(x))
     e = abs(disp - c)
     plot2.append(x)
     plot1.append(e)
-    plot3.append(2 ** -52 * cond)
+    plot3.append(2 ** -52 * con)
     plot4.append((L / x) ** 2)
-    plot5.append(2 ** -52 * cond + (L / x) ** 2)
+    plot5.append(2 ** -52 * con + (L / x) ** 2)
     if e > maxE:
         maxE = e
         maxN = x

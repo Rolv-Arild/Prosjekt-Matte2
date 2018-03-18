@@ -32,6 +32,10 @@ def make_a(n):
     return A.tocsc()
 
 
+def cond(A):
+    return norm(A) * norm(inv(A))
+
+
 def displacement(n: int, L: float, E: float, I: float, f: staticmethod):
     """
     A method for calculating the displacement of a beam
@@ -51,4 +55,4 @@ def displacement(n: int, L: float, E: float, I: float, f: staticmethod):
 
     y = spsolve(A, b)
 
-    return y, norm(A) * norm(inv(A))
+    return y

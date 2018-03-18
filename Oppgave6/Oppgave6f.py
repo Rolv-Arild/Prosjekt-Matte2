@@ -37,7 +37,7 @@ minE = 1000
 minN = 0
 for n in range(1, 11):
     x = 10 * 2 ** n
-    disp = displacement(x, L, E, I, f=f)[0][-1]
+    disp = displacement(x, L, E, I, f=f)[-1]
     e = abs(disp - c)
     if e < minE:
         minE = e

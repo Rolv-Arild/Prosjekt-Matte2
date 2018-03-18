@@ -20,4 +20,4 @@ def f(x):
     return - p * w * d * g + s_2(x)
 
 
-print(displacement(1000, L, E, I, f)[0][-1])
+print(displacement(20000, L, E, I, f)[-1])

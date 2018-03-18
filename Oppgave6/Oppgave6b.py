@@ -32,7 +32,7 @@ plot1 = []
 plot2 = []
 for n in range(1, 11):
     x = 10 * 2 ** n
-    disp = displacement(x, L, E, I, f=f)[0][-1]
+    disp = displacement(x, L, E, I, f=f)[-1]
     plot1.append(disp)
     plot2.append(x)
     e = abs(disp - c)

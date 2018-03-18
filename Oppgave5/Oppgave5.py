@@ -21,7 +21,7 @@ c = correct(L)
 
 
 def error_margin(n):
-    return abs(displacement(n, L, E, I, f=f)[0][-1] - c)
+    return abs(displacement(n, L, E, I, f=f)[-1] - c)
 
 
 maxE = 0
