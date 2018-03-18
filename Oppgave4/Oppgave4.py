@@ -28,14 +28,19 @@ A = make_a(n)
 # Oppgave4c
 y_e = csr_matrix([correct(x/n) for x in range(2, 21, 2)])
 Ay_e = (1/((L/n)**4)) * (A.dot(y_e.T))
+print("Oppgave 4c:")
+print(Ay_e)
+
 
 # Oppgave 4d
 y4_e = csr_matrix([f(1)/(E*I) for x in range(0, n)]).T
-print(np.max(abs(Ay_e)))
+print("\n\nOppgave 4d:")
+print(np.max(abs(Ay_e - y4_e)))
 
 
 # Oppgave 4e
 y_c = csr_matrix(displacement(n, L, E, I, f))
+print("\n\nOppgave 4e:")
 print(np.max(abs(y_c-y_e)))
 
 
