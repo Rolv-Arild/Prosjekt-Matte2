@@ -1,14 +1,6 @@
 import numpy as np
-import scipy.sparse.linalg as ssl
 
-from util import displacement, make_a
-
-bestI = 0
-bestC = 0
-for i in range(10, 10 * 2 ** 11):
-    a = make_a(i)
-    cond = ssl.norm(a) * ssl.norm(a.inverse())
-
+from util import displacement
 
 w = 0.3
 d = 0.03
