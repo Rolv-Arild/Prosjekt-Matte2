@@ -30,14 +30,15 @@ maxE = 0
 maxN = 0
 plot1 = []
 plot2 = []
-for n in range(20, 1 + 10 * 2 ** 11, 20):
-    disp = displacement(n, L, E, I, f=f)[-1]
+for n in range(1, 11):
+    x = 10 * 2 ** n
+    disp = displacement(x, L, E, I, f=f)[0][-1]
     plot1.append(disp)
-    plot2.append(n)
+    plot2.append(x)
     e = abs(disp - c)
     if e > maxE:
         maxE = e
-        maxN = n
+        maxN = x
 
 print('Største feil er', maxE, 'på n =', maxN)  # n=18900 e=0.004973917738686384
 

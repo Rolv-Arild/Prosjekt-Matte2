@@ -30,14 +30,15 @@ maxE = 0
 maxN = 0
 plot1 = []
 plot2 = []
-for n in range(20, 1 + 10 * 2 ** 11, 20):
-    disp = displacement(n, L, E, I, f=f)[-1]
+for n in range(1, 11):
+    x = 10 * 2 ** n
+    disp = displacement(x, L, E, I, f=f)[0][-1]
     e = abs(disp - c)
-    plot2.append(n)
+    plot2.append(x)
     plot1.append(e)
     if e > maxE:
         maxE = e
-        maxN = n
+        maxN = x
 
 pl.plot(np.log10(plot2), np.log10(plot1), label='error(L)')
 

@@ -1,6 +1,6 @@
 import scipy as sp
 from scipy.sparse import csr_matrix, lil_matrix, spdiags
-from scipy.sparse.linalg import spsolve, eigs, eigsh
+from scipy.sparse.linalg import spsolve, inv, norm
 
 
 def make_a(n):
@@ -29,7 +29,7 @@ def make_a(n):
     A[0, 0:4] = B[0, :]
     A[n - 2, n - 4:n] = B[1, :]
     A[n - 1, n - 4:n] = B[2, :]
-    return A.tocsr()
+    return A.tocsc()
 
 
 def displacement(n: int, L: float, E: float, I: float, f: staticmethod):
@@ -51,4 +51,4 @@ def displacement(n: int, L: float, E: float, I: float, f: staticmethod):
 
     y = spsolve(A, b)
 
-    return y, abs(eigsh(A, k=1, which='LM')[0] / eigsh(A, k=1, which='SM')[0])
+    return y, norm(A) * norm(inv(A))

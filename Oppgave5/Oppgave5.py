@@ -21,18 +21,21 @@ c = correct(L)
 
 
 def error_margin(n):
-    return abs(displacement(n, L, E, I, f=f)[-1] - c)
+    return abs(displacement(n, L, E, I, f=f)[0][-1] - c)
 
 
 maxE = 0
 maxN = 0
 errs = []
-for n in range(20, 1 + 10 * 2 ** 11, 20):
-    e = error_margin(n)
+plot2 = []
+for n in range(1, 11):
+    x = 10 * 2 ** n
+    e = error_margin(x)
     errs.append(e)
+    plot2.append(x)
     if e > maxE:
         maxE = e
-        maxN = n
+        maxN = x
 
 print('Største feil er', maxE, 'på n =', maxN)  # n=18900 e=0.00033555218550867724
 print(errs)

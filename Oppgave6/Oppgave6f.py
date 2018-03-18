@@ -1,6 +1,14 @@
 import numpy as np
+import scipy.sparse.linalg as ssl
 
-from util import displacement
+from util import displacement, make_a
+
+bestI = 0
+bestC = 0
+for i in range(10, 10 * 2 ** 11):
+    a = make_a(i)
+    cond = ssl.norm(a) * ssl.norm(a.inverse())
+
 
 w = 0.3
 d = 0.03
@@ -27,11 +35,12 @@ c = correct(L)
 
 minE = 1000
 minN = 0
-for n in range(20, 1 + 10 * 2 ** 11, 20):
-    disp = displacement(n, L, E, I, f=f)[-1]
+for n in range(1, 11):
+    x = 10 * 2 ** n
+    disp = displacement(x, L, E, I, f=f)[0][-1]
     e = abs(disp - c)
     if e < minE:
         minE = e
-        minN = n
+        minN = x
 
 print('Minste feil er', minE, 'på n =', minN)  # n=1660 e=3.830370687296636e-09

@@ -1,8 +1,7 @@
 import matplotlib.pyplot as pl
 import numpy as np
-from scipy.sparse.linalg import norm
 
-from util import displacement, make_a
+from util import displacement
 
 w = 0.3
 d = 0.03
@@ -33,17 +32,21 @@ plot1 = []
 plot2 = []
 plot3 = []
 plot4 = []
-for n in range(20, 1 + 10 * 2 ** 11, 20):
-    disp = displacement(n, L, E, I, f=f)[-1]
+plot5 = []
+for n in range(1, 11):
+    x = 10 * 2 ** n
+    disp = displacement(x, L, E, I, f=f)
+    cond = disp[1]
+    disp = disp[0][-1]
     e = abs(disp - c)
-    plot2.append(n)
+    plot2.append(x)
     plot1.append(e)
-    a = make_a(n)
-    plot3.append(2 ** -52 * norm(a) * norm(a.transpose()))
-    plot4.append((L / n) ** 2)
+    plot3.append(2 ** -52 * cond)
+    plot4.append((L / x) ** 2)
+    plot5.append(2 ** -52 * cond + (L / x) ** 2)
     if e > maxE:
         maxE = e
-        maxN = n
+        maxN = x
 
 # pl.plot([1, 2, 3, 4])
 pl.plot(np.log10(plot2), np.log10(plot1), label='error(L)')
