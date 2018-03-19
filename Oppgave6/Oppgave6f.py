@@ -35,4 +35,4 @@ for n in range(1, 12):
         minE = e
         minN = x
 
-print('Minste feil er', minE, 'på n =', minN)  # n=1660 e=3.830370687296636e-09
+print('Minste feil er', minE, 'på n =', minN)  # n=1280 e=1.4524922645198224e-07

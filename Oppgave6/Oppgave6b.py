@@ -40,8 +40,9 @@ for n in range(1, 12):
         maxE = e
         maxN = x
 
-print('Største feil er', maxE, 'på n =', maxN)  # n=18900 e=0.004973917738686384
+print('Største feil er', maxE, 'på n =', maxN)  # n=20480 e=0.007574846579474548
 
+print(plot1)
 pl.plot(plot2, plot1, label='$y_c$(L)')
 pl.axhline(c, color='r', label='$y_e$(L)')
 
