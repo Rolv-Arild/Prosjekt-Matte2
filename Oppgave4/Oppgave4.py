@@ -9,43 +9,40 @@ w = 0.3
 d = 0.03
 p = 480
 g = 9.81
-I = w * d ** 3 / 12
+I = w * (d ** 3) / 12
 E = 1.3E10
 L = 2.0
 n = 10
 
 
-def f(x):
+def f(x):  # constant f(x)
     return - p * w * d * g
 
 
-def correct(x):
+def correct(x):  # The correct y(x) for constant f(x)=f
     return f(x) / (24 * E * I) * x ** 2 * (x ** 2 - 4 * L * x + 6 * L ** 2)
 
 
-A = make_a(n)
+A = make_a(n)  # A matrix
+condA = norm(A) * norm(inv(A))  # Cond A
 
 # Oppgave4c
-y_e = csr_matrix([correct(x/n) for x in range(2, 21, 2)])
-Ay_e = (1/((L/n)**4)) * (A.dot(y_e.T))
+y_e = (csr_matrix([correct(x/n) for x in range(2, 21, 2)])).T
+Ay_e = csr_matrix((1/((L/n)**4)) * (A.dot(y_e)))
 print("Oppgave 4c:")
 print(Ay_e)
 
 
 # Oppgave 4d
-y4_e = csr_matrix([f(1)/(E*I) for x in range(0, n)]).T
-FEd = np.max(abs(y4_e - Ay_e))
+y4_e = csr_matrix([f(x)/(E*I) for x in range(0, n)]).T
+FE = norm(abs(y4_e - Ay_e), 1)
 print("\n\nOppgave 4d:")
-print("Forward error: ", FEd)
-print("Relative Forward error: ", FEd / np.max(abs(y4_e)))
+print("Forward error: ", FE, " or ", FE / (2**-52), " machineeps")
+print("Relative Forward error: ", FE / np.max(abs(y4_e)))
 
 
 # Oppgave 4e
-y_c = csr_matrix(displacement(n, L, E, I, f))
-FEe = np.max(abs(y_c-y_e))
+y_c = (csr_matrix(displacement(n, L, E, I, f))).T
+FE = norm(abs(y_c-y_e), 1)
 print("\n\nOppgave 4e:")
-print("Forward error: ", FEe)
-
-
-# Cond A
-condA = norm(A) * norm(inv(A))
+print("Forward error: ", FE / (2**-52), " machineeps")
