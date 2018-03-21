@@ -1,4 +1,3 @@
-import numpy as np
 import scipy as sp
 from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import norm, inv
@@ -33,7 +32,7 @@ Ay_e = csr_matrix((1/((L/n)**4)) * (A.dot(y_e)))
 print("Oppgave 4c:")
 print("y_e:")
 print(y_e)
-print("Ay_e:")
+print("\nAy_e:")
 print(Ay_e)
 
 
@@ -57,6 +56,6 @@ y_c = (csr_matrix(displacement(n, L, E, I, f))).T
 FE = norm(y_c-y_e, sp.inf)
 
 print("\n\nOppgave 4e:")
-print("Forward error: ", FE / (2**-52), " machineeps")
-
-print(y4_e)
+print("y_c: ")
+print(y_c)
+print("\nForward error: ", FE, " or ", FE / (2**-52), " machineeps")
