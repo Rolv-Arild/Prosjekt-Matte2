@@ -28,19 +28,19 @@ c = correct(L)
 
 maxE = 0
 maxN = 0
+plotx = []
 plot1 = []
-plot2 = []
 for n in range(1, 12):
     x = 10 * 2 ** n
     disp = displacement(x, L, E, I, f=f)[-1]
     e = abs(disp - c)
-    plot2.append(x)
+    plotx.append(x)
     plot1.append(e)
     if e > maxE:
         maxE = e
         maxN = x
 
-pl.plot(np.log10(plot2), np.log10(plot1), label='error(L)')
+pl.plot(np.log10(plotx), np.log10(plot1), label='error(L)')
 
 pl.legend(loc='best')
 pl.ylabel('$log_{10}$(y)')

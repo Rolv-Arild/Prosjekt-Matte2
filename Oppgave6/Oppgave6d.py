@@ -28,28 +28,27 @@ c = correct(L)
 
 maxE = 0
 maxN = 0
+plotx = []
 plot1 = []
 plot2 = []
 plot3 = []
-plot4 = []
-plot5 = []
 for n in range(1, 12):
     x = 10 * 2 ** n
     disp = displacement(x, L, E, I, f=f)[-1]
     con = cond(make_a(x))
     e = abs(disp - c)
-    plot2.append(x)
+    plotx.append(x)
     plot1.append(e)
-    plot3.append(2 ** -52 * con)
-    plot4.append((L / x) ** 2)
+    plot2.append(2 ** -52 * con)
+    plot3.append((L / x) ** 2)
     if e > maxE:
         maxE = e
         maxN = x
 
 # pl.plot([1, 2, 3, 4])
-pl.plot(np.log10(plot2), np.log10(plot1), label='error(L)')
-pl.plot(np.log10(plot2), np.log10(plot3), label='$\epsilon_{mach}$cond(A)')
-pl.plot(np.log10(plot2), np.log10(plot4), label='$h^2$')
+pl.plot(np.log10(plotx), np.log10(plot1), label='error(L)')
+pl.plot(np.log10(plotx), np.log10(plot2), label='$\epsilon_{mach}$cond(A)')
+pl.plot(np.log10(plotx), np.log10(plot3), label='$h^2$')
 
 pl.legend(loc='best')
 pl.ylabel('$log_{10}$(y)')

@@ -26,28 +26,17 @@ def f(x):
 
 print(displacement(1280, L, E, I, f)[-1])
 
+plotx = []
 plot1 = []
-plot2 = []
 for n in range(1, 12):
     x = 10 * 2 ** n
     disp = displacement(x, L, E, I, f=f)[-1]
     plot1.append(disp)
-    plot2.append(x)
+    plotx.append(x)
 
-pl.plot(plot2, plot1, label='$y_c$(L)')
+pl.plot(plotx, plot1, label='$y_c$(L)')
 
 pl.legend(loc='best')
 pl.ylabel('y')
 pl.xlabel('n')
 pl.show()
-
-m = 10000
-mN = 0
-for n in range(1, 11):
-    x = 10 * 2 ** n
-    con = cond(make_a(x))
-    v = 2 ** -52 * con + (L / x) ** 2
-    if v < m:
-        m = v
-        mN = x
-print("Optimal n =", mN, "med verdi:", m)

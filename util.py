@@ -36,7 +36,7 @@ def cond(A):
     return norm(A) * norm(inv(A))
 
 
-def displacement(n: int, L: float, E: float, I: float, f: staticmethod):
+def displacement(n: int, L: float, E: float, I: float, f: staticmethod) -> list:
     """
     A method for calculating the displacement of a beam
 
