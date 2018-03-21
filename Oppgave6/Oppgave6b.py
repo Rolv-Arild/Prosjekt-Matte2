@@ -28,13 +28,13 @@ c = correct(L)
 
 maxE = 0
 maxN = 0
+plotx = []
 plot1 = []
-plot2 = []
 for n in range(1, 12):
     x = 10 * 2 ** n
     disp = displacement(x, L, E, I, f=f)[-1]
     plot1.append(disp)
-    plot2.append(x)
+    plotx.append(x)
     e = abs(disp - c)
     if e > maxE:
         maxE = e
@@ -43,7 +43,7 @@ for n in range(1, 12):
 print('Største feil er', maxE, 'på n =', maxN)  # n=20480 e=0.007574846579474548
 
 print(plot1)
-pl.plot(plot2, plot1, label='$y_c$(L)')
+pl.plot(plotx, plot1, label='$y_c$(L)')
 pl.axhline(c, color='r', label='$y_e$(L)')
 
 pl.legend(loc='best')
