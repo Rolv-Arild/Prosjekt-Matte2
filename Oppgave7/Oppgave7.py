@@ -40,14 +40,3 @@ pl.legend(loc='best')
 pl.ylabel('y')
 pl.xlabel('n')
 pl.show()
-
-m = 10000
-mN = 0
-for n in range(1, 11):
-    x = 10 * 2 ** n
-    con = cond(make_a(x))
-    v = 2 ** -52 * con + (L / x) ** 2
-    if v < m:
-        m = v
-        mN = x
-print("Optimal n =", mN, "med verdi:", m)
