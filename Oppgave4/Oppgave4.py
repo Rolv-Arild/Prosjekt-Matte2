@@ -36,22 +36,24 @@ print(Ay_e)
 
 # Oppgave 4d
 y4_e = csr_matrix([f(x)/(E*I) for x in range(0, n)]).T
-FE = norm(y4_e - Ay_e, 1)  # Forward Error
-RFE = norm(Ay_e - y4_e, sp.inf) / norm(y4_e, sp.inf)  # Relative Forward Error
+FE = norm(Ay_e - y4_e, sp.inf)  # Forward Error
+RFE = norm(Ay_e - y4_e, sp.inf) / norm(Ay_e, sp.inf)  # Relative Forward Error
 RBE = 2**-52  # Relative Backwards Error (Given in assignment)
 ErrMag = RFE/RBE  # Error Magnification Factor
 
 print("\n\nOppgave 4d:")
 print("Forward error: ", FE, " or ", FE / (2**-52), " machineeps")
-print("Relative Forward error: ", RFE, " or ", RFE / (2**-52), " machineeps")
-print("Relative Backward error: ", RBE, " or ", RBE / (2**-52), " machineeps")
+print("Relative Forward error: ", RFE)
+print("Relative Backward error: ", RBE)
 print("Error Magnification Factor: ", ErrMag)
 print("Condition Number of A: ", condA)
 
 
 # Oppgave 4e
 y_c = (csr_matrix(displacement(n, L, E, I, f))).T
-FE = norm(y_c-y_e, 1)
+FE = norm(y_c-y_e, sp.inf)
 
 print("\n\nOppgave 4e:")
 print("Forward error: ", FE / (2**-52), " machineeps")
+
+print(y4_e)
