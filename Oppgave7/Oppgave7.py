@@ -1,6 +1,6 @@
 import matplotlib.pyplot as pl
 
-from util import displacement, make_a, cond
+from util import displacement
 
 w = 0.3
 d = 0.03
@@ -9,8 +9,8 @@ g = 9.81
 I = w * d ** 3 / 12
 E = 1.3E10
 L = 2.0
-dw = 50
-df = 0.3
+dw = 60
+df = 1.0
 
 
 def s_2(x):
@@ -24,19 +24,16 @@ def f(x):
     return - p * w * d * g + s_2(x)
 
 
-print(displacement(1280, L, E, I, f)[-1])
+disp = displacement(1280, L, E, I, f)
 
-plotx = []
-plot1 = []
-for n in range(1, 12):
-    x = 10 * 2 ** n
-    disp = displacement(x, L, E, I, f=f)[-1]
-    plot1.append(disp)
-    plotx.append(x)
+print("y(L) =", disp[-1])
 
-pl.plot(plotx, plot1, label='$y_c$(L)')
+plotx = [L * i / len(disp) for i in range(1, len(disp) + 1)]
+
+pl.plot(plotx, disp, label='$y_c$(x)')
 
 pl.legend(loc='best')
 pl.ylabel('y')
 pl.xlabel('n')
+pl.axis('scaled')
 pl.show()

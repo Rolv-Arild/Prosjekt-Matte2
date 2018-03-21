@@ -33,6 +33,12 @@ def make_a(n):
 
 
 def cond(A):
+    """
+    Finds the condition number of a sparse matrix
+
+    :param A: the matrix to find the condition number of
+    :return: the condition number of A
+    """
     return norm(A) * norm(inv(A))
 
 
