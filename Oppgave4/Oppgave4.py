@@ -31,6 +31,9 @@ y_e = (csr_matrix([correct(x/n) for x in range(2, 21, 2)])).T
 Ay_e = csr_matrix((1/((L/n)**4)) * (A.dot(y_e)))
 
 print("Oppgave 4c:")
+print("y_e:")
+print(y_e)
+print("Ay_e:")
 print(Ay_e)
 
 

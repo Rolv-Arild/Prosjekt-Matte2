@@ -46,9 +46,9 @@ for n in range(1, 12):
         maxN = x
 
 # pl.plot([1, 2, 3, 4])
-pl.plot(np.log10(plotx), np.log10(plot1), label='error(L)')
-pl.plot(np.log10(plotx), np.log10(plot2), label='$\epsilon_{mach}$cond(A)')
-pl.plot(np.log10(plotx), np.log10(plot3), label='$h^2$')
+pl.loglog(plotx, plot1, label='error(L)')
+pl.loglog(plotx, plot2, label='$\epsilon_{mach}$cond(A)')
+pl.loglog(plotx, plot3, label='$h^2$')
 
 pl.legend(loc='best')
 pl.ylabel('$log_{10}$(y)')

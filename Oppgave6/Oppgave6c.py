@@ -40,7 +40,7 @@ for n in range(1, 12):
         maxE = e
         maxN = x
 
-pl.plot(np.log10(plotx), np.log10(plot1), label='error(L)')
+pl.loglog(plotx, plot1, label='error(L)')
 
 pl.legend(loc='best')
 pl.ylabel('$log_{10}$(y)')

@@ -1,4 +1,7 @@
-from util import displacement
+import numpy as np
+
+from util import displacement, cond, make_a
+import matplotlib.pyplot as pl
 
 w = 0.3
 d = 0.03
@@ -27,15 +30,25 @@ def error_margin(n):
 maxE = 0
 maxN = 0
 errs = []
-plot2 = []
+conds = []
+plotx = []
 for n in range(1, 12):
     x = 10 * 2 ** n
     e = error_margin(x)
+    conds.append(cond(make_a(x)))
     errs.append(e)
-    plot2.append(x)
+    plotx.append(x)
     if e > maxE:
         maxE = e
         maxN = x
 
-print('Største feil er', maxE, 'på n =', maxN)  # n=18900 e=0.00033555218550867724
+print('Største feil er', maxE, 'på n =', maxN)  # n=20480 e=0.00033555218550867724
 print(errs)
+
+pl.plot(plotx, np.log10(errs), label='$error$(L)')
+pl.plot(plotx, np.log10(conds), label='$cond$(A)')
+
+pl.legend(loc='best')
+pl.ylabel('$log_{10}$y')
+pl.xlabel('n')
+pl.show()
