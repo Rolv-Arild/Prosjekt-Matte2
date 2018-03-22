@@ -43,6 +43,6 @@ for n in range(1, 12):
 pl.loglog(plotx, plot1, label='error(L)')
 
 pl.legend(loc='best')
-pl.ylabel('$log_{10}$(y)')
-pl.xlabel('$log_{10}$(n)')
+pl.ylabel('y')
+pl.xlabel('n')
 pl.show()

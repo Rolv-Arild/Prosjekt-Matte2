@@ -51,6 +51,6 @@ pl.loglog(plotx, plot2, label='$\epsilon_{mach}$cond(A)')
 pl.loglog(plotx, plot3, label='$h^2$')
 
 pl.legend(loc='best')
-pl.ylabel('$log_{10}$(y)')
-pl.xlabel('$log_{10}$(n)')
+pl.ylabel('y')
+pl.xlabel('n')
 pl.show()

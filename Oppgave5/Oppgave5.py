@@ -49,6 +49,6 @@ pl.semilogy(plotx, errs, label='$error$(L)')
 pl.semilogy(plotx, conds, label='$cond$(A)')
 
 pl.legend(loc='best')
-pl.ylabel('$log_{10}$y')
+pl.ylabel('y')
 pl.xlabel('n')
 pl.show()
