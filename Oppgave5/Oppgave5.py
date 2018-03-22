@@ -45,8 +45,8 @@ for n in range(1, 12):
 print('Største feil er', maxE, 'på n =', maxN)  # n=20480 e=0.00033555218550867724
 print(errs)
 
-pl.plot(plotx, np.log10(errs), label='$error$(L)')
-pl.plot(plotx, np.log10(conds), label='$cond$(A)')
+pl.semilogy(plotx, errs, label='$error$(L)')
+pl.semilogy(plotx, conds, label='$cond$(A)')
 
 pl.legend(loc='best')
 pl.ylabel('$log_{10}$y')
